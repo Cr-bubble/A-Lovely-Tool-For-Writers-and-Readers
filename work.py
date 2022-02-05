@@ -23,7 +23,7 @@ class Text:
         self.dist = 90
         self.dist_down = 80
         self.screen = pygame.display.set_mode(self.size, 0, 32)
-        self.word = pygame.font.SysFont("mingliu.ttc", 55)
+        self.word = pygame.font.SysFont("Arial", 55)
         
     def clear_board(self):
         self.screen.fill((255,255,255))
