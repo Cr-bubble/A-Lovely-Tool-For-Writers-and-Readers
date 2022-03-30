@@ -72,7 +72,7 @@ class Text:
         d = self.dist
         d2 = self.dist_down
         background = pygame.Surface(self.screen.get_size()).convert()
-        select_label = pygame.image.load("index1.png").convert()
+        select_label = pygame.image.load("./icon/index1.png").convert()
         select_label = pygame.transform.scale(select_label, (d, d))
         color_1 = (139,69,19)
         color_2 = (191,40,40)
@@ -108,7 +108,7 @@ class Text:
             pygame.draw.polygon(self.screen,(0,0,0),[(915,465),(895,425),(935,425)],3)
         if add_book:
             pygame.draw.rect(self.screen,(0,0,0),self.add_button,3)
-            addicon = pygame.image.load("addicon.png").convert()
+            addicon = pygame.image.load("./icon/addicon.png").convert()
             self.screen.blit(addicon,(10,self.size[1]-self.dist_down-70))
         pygame.display.update()
 
