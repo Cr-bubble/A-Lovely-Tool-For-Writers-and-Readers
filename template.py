@@ -164,10 +164,30 @@ class Text:
         pygame.display.update()
         self.pre_cou = cou
         return cou
-
+    
+    def trans_book(self, name):
+        book = story(name)
+        tp = []
+        for lines in book.f:
+            while len(lines) > 46:
+                tps = lines[:45]
+                if tps[-1] != '\n':
+                    tps = tps + '\n'
+                tp.append(tps)
+                lines = lines[45:]
+            else:
+                tp.append(lines)
+        book.f.close()
+        book = story(name,"w+")
+        for i in tp:
+            book.f.write(i)
+        book.f.close()
+        return
+    
     def p_book(self,mode,name,page = 1):
         self.clear_board()
         self.scene(mode,name,change_p=True)
+        self.trans_book(name)
         book = story(name)
         st = 0+(page-1)*9
         ed = 8+(page-1)*9
@@ -415,6 +435,8 @@ class Text:
                             return "w-L-1"
                     list.f.write(str(cou+1)+" "+book_name+"\n")
                     list.f.close()
+                    tp = story(book_name)
+                    tp.f.close()
                     return "w-L-1"
                 else:
                     book_name += event.unicode
